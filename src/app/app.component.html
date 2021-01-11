@@ -6,6 +6,31 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-
-
-<router-outlet></router-outlet>
+<div class="ui container">
+  <div class="ui secondary pointing menu">
+    <a routerLink="/" class="item">Angular email</a>
+    <div class="right menu">
+      <ng-container *ngIf="signedin$ | async">
+        <a routerLink="inbox" class="ui item" routerLinkActive="active"
+          >Inbox</a
+        >
+        <a routerLink="signout" class="ui item" routerLinkActive="active"
+          >Sign out</a
+        >
+      </ng-container>
+      <ng-container *ngIf="!(signedin$ | async)">
+        <a
+          routerLink="/"
+          [routerLinkActiveOptions]="{exact:true}"
+          class="ui item"
+          routerLinkActive="active"
+          >Sign In</a
+        >
+        <a routerLink="signup" class="ui item" routerLinkActive="active"
+          >Sign Up</a
+        >
+      </ng-container>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
