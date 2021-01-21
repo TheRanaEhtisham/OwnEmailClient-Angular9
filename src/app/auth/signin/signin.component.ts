@@ -36,6 +36,7 @@ export class SigninComponent implements OnInit {
       next: () => {
         this.router.navigateByUrl('/inbox');
       },
+      complete: () => { },
       error: ({ error }) => {
         if (error.username || error.password) {
           this.authForm.setErrors({ credentials: true })
